@@ -1,4 +1,4 @@
-const {addTask, editTask} = require('../js/logic.js');
+const {addTask, editTask, completeTask} = require('../js/logic.js');
 
 describe("To Do Web App", () => {
     // Test Add Task Function
@@ -9,7 +9,8 @@ describe("To Do Web App", () => {
                 id: Date.now(),
                 title: "Go To Doctor",
                 day: "21-09-2001",
-                time: "12:00 PM"
+                time: "12:00 PM",
+                status: false
             }
         ]
 
@@ -23,7 +24,8 @@ describe("To Do Web App", () => {
                 id: Date.now(),
                 title: "Go To Doctor",
                 day: "21-09-2001",
-                time: "12:00 PM"
+                time: "12:00 PM",
+                status: false
             },
             "Go To Karam Edited",
             "22-09-2001",
@@ -33,7 +35,30 @@ describe("To Do Web App", () => {
                 id: Date.now(),
                 title: "Go To Karam Edited",
                 day: "22-09-2001",
-                time: "11:00 AM"
+                time: "11:00 AM",
+                status: false
+            }
+
+        expect(expected).toEqual(actual);
+    })
+
+    // Test Complete Task Function
+    test("Should Return The Task As A Completed", () => {
+        let actual = completeTask(
+            {
+                id: Date.now(),
+                title: "Go To Doctor",
+                day: "21-09-2001",
+                time: "12:00 PM",
+                status: false
+            }
+        );
+        let expected = {
+                id: Date.now(),
+                title: "Go To Doctor",
+                day: "21-09-2001",
+                time: "12:00 PM",
+                status: true
             }
 
         expect(expected).toEqual(actual);
