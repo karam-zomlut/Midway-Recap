@@ -252,7 +252,25 @@ tasksList.addEventListener("click", (e) => {
             addTaskToPage(arrayOfTasks)
         })
     }
+
+    else if (e.target.dataset.id === "delete"){
+        deleteTask(e.target.parentElement.dataset.id);
+
+        // Update Local Storage
+        addTasksToLocalStorage(arrayOfTasks);
+
+        // Update Page
+        addTaskToPage(arrayOfTasks);
+
+        // Check Divs
+        checkDivs(arrayOfTasks);
+    }
 })
+
+// Delete Task Function
+function deleteTask (taskId) {
+    arrayOfTasks = arrayOfTasks.filter(task => task.id != taskId);
+}
 
 function addTasksToLocalStorage(arrayOfTasks){
     window.localStorage.setItem("ToDoList", JSON.stringify(arrayOfTasks));
