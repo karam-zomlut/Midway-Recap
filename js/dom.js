@@ -1,6 +1,7 @@
 /* *************************************************************
     Style The Page 
 ************************************************************* */
+
 // Open Form to Add Task
 let openBtn = document.querySelector(".add-sec .sec-top .btn.open-btn");
 let addForm = document.querySelector(".add-sec .form.add-form");
@@ -264,6 +265,19 @@ tasksList.addEventListener("click", (e) => {
 
         // Check Divs
         checkDivs(arrayOfTasks);
+    }
+
+    else if (e.target.dataset.id === "status"){
+        let taskId = e.target.parentElement.dataset.id;
+        let thisTask = arrayOfTasks.filter(task => task.id == taskId);
+
+        completeTask(thisTask[0]);
+
+        // Update Local Storage
+        addTasksToLocalStorage(arrayOfTasks);
+
+        // Update Page
+        addTaskToPage(arrayOfTasks);
     }
 })
 

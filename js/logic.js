@@ -7,7 +7,8 @@ function addTask(title, day, time){
         id: Date.now(),
         title: title,
         day: day,
-        time: time
+        time: time,
+        status: false,
     }
 
     // Push Task To Array Of Tasks
@@ -28,6 +29,12 @@ function editTask(obj, newTitle, newDay, newTime){
 }
 
 
+// Complete Task
+function completeTask(obj){
+    obj.status ? obj.status = false : obj.status = true;
+
+    return obj
+}
 
 
 
@@ -35,6 +42,7 @@ function editTask(obj, newTitle, newDay, newTime){
 if (typeof module !== "undefined") {
     module.exports = {
         addTask,
-        editTask
+        editTask,
+        completeTask
     };
 }
