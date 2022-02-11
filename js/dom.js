@@ -52,7 +52,7 @@ function closeEditForm () {
 
 
 // Start Functions
-arrayOfTasks = window.localStorage.getItem("ToDoList") || [];
+arrayOfTasks = JSON.parse(window.localStorage.getItem("ToDoList")) || [];
 
 // No Item Div
 let noItemDiv = document.querySelector('.view-sec .no-item');
@@ -219,6 +219,40 @@ function addTaskToPage(arrayOfTasks){
         deleteTaskBtn.appendChild(deleteIcon);
     });
 }
+
+// Edit Task Function
+
+// Edit Form Inputs Variables
+let editTitle = document.getElementById("edit-title");
+let editDay = document.getElementById("edit-day");
+let editTime = document.getElementById("edit-time");
+let editBtn = document.getElementById("edit-btn");
+
+tasksList.addEventListener("click", (e) => {
+    if (e.target.dataset.id === "edit"){
+        let taskId = e.target.parentElement.dataset.id;
+        let thisTask = arrayOfTasks.filter(task => task.id == taskId);
+
+        editTitle.value = thisTask[0].title; 
+        editDay.value = thisTask[0].day; 
+        editTime.value = thisTask[0].time; 
+
+        editBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            editTask(thisTask[0], editTitle.value, editDay.value, editTime.value);
+
+            // Close Edit Form
+            closeEditForm();
+
+            // Update Local Storage
+            addTasksToLocalStorage(arrayOfTasks);
+
+            // Update Page
+            addTaskToPage(arrayOfTasks)
+        })
+    }
+})
 
 function addTasksToLocalStorage(arrayOfTasks){
     window.localStorage.setItem("ToDoList", JSON.stringify(arrayOfTasks));
