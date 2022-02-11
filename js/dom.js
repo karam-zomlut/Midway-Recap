@@ -105,7 +105,10 @@ saveBtn.addEventListener("click", (e) => {
         addTaskToPage(arrayOfTasks);
 
         // Add Tasks To Local Storage
-        addTasksToLocalStorage(arrayOfTasks)
+        addTasksToLocalStorage(arrayOfTasks);
+
+        // Update Tasks Statistics
+        tasksStatistics(arrayOfTasks);
 
         // Check Divs
         checkDivs(arrayOfTasks);
@@ -250,7 +253,7 @@ tasksList.addEventListener("click", (e) => {
             addTasksToLocalStorage(arrayOfTasks);
 
             // Update Page
-            addTaskToPage(arrayOfTasks)
+            addTaskToPage(arrayOfTasks);
         })
     }
 
@@ -262,6 +265,9 @@ tasksList.addEventListener("click", (e) => {
 
         // Update Page
         addTaskToPage(arrayOfTasks);
+
+        // Update Tasks Statistics
+        tasksStatistics(arrayOfTasks);
 
         // Check Divs
         checkDivs(arrayOfTasks);
@@ -278,6 +284,9 @@ tasksList.addEventListener("click", (e) => {
 
         // Update Page
         addTaskToPage(arrayOfTasks);
+
+        // Update Tasks Statistics
+        tasksStatistics(arrayOfTasks);
     }
 })
 
@@ -286,10 +295,26 @@ function deleteTask (taskId) {
     arrayOfTasks = arrayOfTasks.filter(task => task.id != taskId);
 }
 
+// Task Statistics
+let allTasksValue = document.querySelector(".tasks-info .value.all-tasks");
+let compltedTasksValue = document.querySelector(".tasks-info .value.completed");
+
+function tasksStatistics(arrayOfTasks){
+    let allTasks = arrayOfTasks.length;
+    let completedTasks = arrayOfTasks.filter(task => task.status === true).length;
+
+    allTasksValue.textContent = allTasks;
+    compltedTasksValue.textContent = completedTasks;
+}
+
+tasksStatistics(arrayOfTasks);
+
+// Update Local Storage
 function addTasksToLocalStorage(arrayOfTasks){
     window.localStorage.setItem("ToDoList", JSON.stringify(arrayOfTasks));
 }
 
+// Get From Local Storage
 function getTasksFromLocalStorage(){
     let data = window.localStorage.getItem("ToDoList");
     if (data){
