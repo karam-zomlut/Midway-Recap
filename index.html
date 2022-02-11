@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App | BY: Karam</title>
+    <link rel="shortcut icon" href="img/karam-logo.svg" type="image/x-icon">
+
+    <!-- Calling Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    
+    <!-- Calling CSS Files -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+    <!-- Start Page Container -->
+    <div class="container">
+        <!-- Start Page Header -->
+        <header class="page-header">
+            <h1 class="page-title">To Do List App</h1>
+        </header>
+        <!-- End Page Header -->
+
+        <!-- Start Page Mian -->
+        <main class="page-main">
+            <!-- Start Add Tasks Section -->
+            <section class="add-sec">
+                <!-- Section Top Info -->
+                <div class="sec-top">
+                    <h3 class="sec-title">My Tasks</h3>
+                    <button class="btn open-btn">
+                        <div class="add-span"><span class="ri-add-fill icon"></span> Add Task</div>
+                        <div class="close-span"><span class="ri-close-line icon"></span> Cancel</div>
+                    </button>
+                    <button class="btn close-btn">
+                        <div class="close-span"><span class="ri-close-line icon"></span> Cancel</div>
+                    </button>
+                </div>
+
+                <!-- Start Add Form -->
+                <form class="form add-form">
+                    <!-- Task Title -->
+                    <div class="task-title">
+                        <label for="task-title">Task Title</label>
+                        <input type="text" class="inpt" name="task-title" id="task-title" placeholder="Type Your Task Here...">
+                    </div>
+                    <div class="task-info">
+                        <!-- Task Day -->
+                        <div class="task-day half-div">
+                            <label for="task-day">Day</label>
+                            <input type="date" class="inpt" name="task-day" id="task-day">
+                        </div>
+
+                        <!-- Task Time -->
+                        <div class="task-time half-div">
+                            <label for="task-time">Time</label>
+                            <input type="time" class="inpt" name="task-time" id="task-time">
+                        </div>
+                    </div>
+
+                    <button class="btn save-btn" id="save-btn">
+                        <span class="ri-add-fill icon"></span> Add Task
+                    </button>
+                </form>
+
+                <!-- Start Edit Form -->
+                <form class="form edit-form">
+                    <!-- Task Title -->
+                    <div class="task-title">
+                        <label for="task-title">Task Title</label>
+                        <input type="text" class="inpt" name="task-title" id="edit-title" placeholder="Type Your Task Here...">
+                    </div>
+                    <div class="task-info">
+                        <!-- Task Day -->
+                        <div class="task-day half-div">
+                            <label for="task-day">Day</label>
+                            <input type="date" class="inpt" name="task-day" id="edit-day">
+                        </div>
+
+                        <!-- Task Time -->
+                        <div class="task-time half-div">
+                            <label for="task-time">Time</label>
+                            <input type="time" class="inpt" name="task-time" id="edit-time">
+                        </div>
+                    </div>
+
+                    <button class="btn save-btn" id="edit-btn">
+                        <span class="ri-check-fill icon"></span> Edit Task
+                    </button>
+                </form>
+            </section>
+            <!-- End Add Tasks Section -->
+
+            <!-- Start View Section -->
+            <section class="view-sec">
+                
+                <!-- Tasks List -->
+                <div class="tasks-div">
+                    <!-- Tasks info -->
+                    <div class="tasks-info">
+                        <h4 class="sec-title">Tasks Completed</h4>
+                        <p class="nums"><span class="value completed">2</span> <span class="from">from</span> <span class="value all-tasks">5</span></p>
+                    </div>
+                    <ul class="tasks-list">
+                        <!-- Single Task -->
+                        <li class="single-task ${task.status == true? "completed" : " "}" data-id="${task.id}">
+                            <!-- Done Button -->
+                            <button class="done-btn" data-id="status">
+                                <span class="not-done-icon ri-checkbox-blank-circle-line icon"></span>
+                                <span class="done-icon ri-checkbox-circle-line icon"></span>
+                            </button>
+                            <!-- Tasks Details -->
+                            <div class="task-details">
+                                <p class="task-name">${task.title}</p>
+                                <div class="day-time">
+                                    <p class="day">
+                                        <span class="ri-calendar-line icon"></span>
+                                        <span class="value day">${task.day}</span>
+                                    </p>
+                                    <p class="time">
+                                        <span class="ri-time-line icon"></span>
+                                        <span class="value day">${task.time}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Edit & Delete Button -->
+                            <button class="edit-btn" data-id="edit">
+                                <span class="trash-icon ri-pencil-line icon"></span>
+                            </button>
+                            <button class="trash-btn" data-id="delete">
+                                <span class="trash-icon ri-delete-bin-6-line icon"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="no-item">
+                    <div class="image-div">
+                        <img src="img/no-item.svg" alt="no-item">
+                    </div>
+                    <h4 class="title">Add a New Task</h4>
+                </div>
+            </section>
+            <!-- End View Section -->
+        </main>
+        <!-- End Page Main -->
+    </div>
+    <!-- End Page Container -->
+
+    <!-- Calling Js Files -->
+    <script src="js/logic.js"></script>
+    <script src="js/dom.js"></script>
+</body>
+</html>
