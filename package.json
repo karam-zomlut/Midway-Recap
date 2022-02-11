@@ -1,0 +1,25 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "To Do App With Pure Functions",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karam-zomlut/To-Do-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karam-zomlut/To-Do-App/issues"
+  },
+  "homepage": "https://github.com/karam-zomlut/To-Do-App#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
